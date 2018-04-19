@@ -10,22 +10,51 @@ def verificarDobleCero(num):
         return True
 
 #Von Neumann
-print("Arrancamos. Ingrese un número de 4 digitos como -semilla-\n")
-semilla = input()
-print("Ingrese la cantidad de números a generar")
-cantidad = input()
-numerosGenerados = [semilla]
-while cantidad > 0:
-    cuadrado = semilla ** 2
-    ochoCifras = str(cuadrado)
-    while (len(ochoCifras) < 8):
-        #se debe completar con ceros a la izquierda
-        ochoCifras = "0" + ochoCifras
-    semilla = int(ochoCifras[2:-2])
-    numerosGenerados.append(semilla)
-    if not(verificarDobleCero(semilla)):
-        #se suma un valor X al número para poder continuar con la generación
-        semilla += 37
-    cantidad -= 1
-print("Proceso de generación finalizado. Resultados:\n")
-print(numerosGenerados)
+def generadorVonNeumann(valorSemilla,cantidadGenerar):
+    numerosGenerados = [valorSemilla]
+    while cantidadGenerar > 0:
+        cuadrado = valorSemilla ** 2
+        ochoCifras = str(cuadrado)
+        while (len(ochoCifras) < 8):
+            #se debe completar con ceros a la izquierda
+            ochoCifras = "0" + ochoCifras
+        valorSemilla = int(ochoCifras[2:-2])
+        numerosGenerados.append(valorSemilla)
+        if not(verificarDobleCero(valorSemilla)):
+            #se suma un valor X al número para poder continuar con la generación
+            valorSemilla += 37
+        cantidadGenerar -= 1
+    return numerosGenerados
+
+#Fibonacci
+def generadorFibonacci(valor1,valo2,valorA):
+    return 0
+
+def metodoVonNeumann():
+    print("Inicio del generador. Ingrese un número de 4 digitos como -semilla-:")
+    semilla = input()
+    print("Ingrese la cantidad de números a generar:")
+    cantidad = input()
+    res = generadorVonNeumann(semilla,cantidad)
+    print("Proceso de generación mediante el método de Von Neumann finalizado. Resultados:\n")
+    print(res)
+    print
+
+
+#main
+print("Inicio del generador. Seleccione el método a utilizar:")
+print("-1- Von Neumann.")
+print("-2- Fibonacci.")
+print("-3- Salir.")
+opcion = input()
+if (opcion == "1"):
+    metodoVonNeumann
+    print "hola"
+elif (opcion == "2"):
+    metodoFibonacci
+print "Fin de la ejecución."
+
+
+
+
+
