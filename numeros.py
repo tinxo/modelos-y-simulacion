@@ -21,6 +21,16 @@ def extraerUnidades(serieNumeros):
         idx += 1
     return nuevaSerie
 
+def convertirValoresBinarios(serieNumeros):
+    nuevaSerie = []
+    # la serie de numeros a convertir debe ser de unidades
+    for num in serieNumeros:
+        if (num < 5):
+            nuevaSerie.append(0)
+        else:
+            nuevaSerie.append(1)
+    return nuevaSerie
+
 #Von Neumann
 def metodoVonNeumann():
     print("Inicio del generador. Ingrese un número de 4 digitos como -semilla-:")
