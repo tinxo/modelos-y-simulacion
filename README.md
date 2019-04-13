@@ -2,7 +2,6 @@
   
 ## Repositorio de código para la cátedra Modelos y Simulación - Lic. en Sistemas de Información - FCEQyN - UNaM
 
-### Disponible por ahora:
+### Versión 2019:
 
-##### Métodos de generación de números (pseudo)aleatorios:
-* Von Neumann
+Se incluyó una libreta de jupyter con todos los métodos de generación de números pseudoaleatorios correspondientes al tema 2 de la asignatura.
