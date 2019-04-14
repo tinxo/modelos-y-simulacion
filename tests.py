@@ -1,28 +1,38 @@
 # -*- coding: utf-8 -*-
-# Métodos de testeo para series de números (pseudo)aleatorios
+#Test de Chi-Cuadrada
 
+# Constantes para no cargar la tabla completa (por ahora)
 valoresGL9 = {
     0.01 : 12.43,
     0.05 : 11.32
     }
 
-def testChiCuadrado(serieNumeros,cantDigitos,margenError):
-    frecuenciaObservada = [0] * cantDigitos
+valoresGL2 = {
+    0.01 : 0.0,
+    0.05 : 0.0
+    }
+
+def testChiCuadrado(serieNumeros,cantidadDigitos,margenError):
+    print(serieNumeros)
+    frecuenciaObservada = [0] * cantidadDigitos
+    
     for num in serieNumeros:
         frecuenciaObservada[num] += 1
+    
     frecuenciaTeorica = len(serieNumeros) / cantidadDigitos
-    gradosLibertad = cantDigitos - 1
+    gradosLibertad = cantidadDigitos - 1
     chi = 0
     for valor in frecuenciaObservada:
-        numerador = (frecuenciaObservada - frecuenciaTeorica) ** 2
+        numerador = (valor - frecuenciaTeorica) ** 2
         chi += (numerador / frecuenciaTeorica)
+    
     if (gradosLibertad == 9):
         # Chi cuadrado tradicional
-        if valoresGL9[margenError] <= chi
+        if valoresGL9[margenError] >= chi:
             return True
     elif (gradosLibertad == 2):
         # Monobits
-        if valoresGL2[margenError] <= chi
+        if valoresGL2[margenError] >= chi:
             return True
     else:
         return False

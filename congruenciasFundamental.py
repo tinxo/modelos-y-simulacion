@@ -1,34 +1,20 @@
 #-*-coding:utf8;-*-
-#qpy:3
-#qpy:console
-
-print("Congruencias: Relac. Fundamental")
-
-v1 = 14
-v2 = 17
-paramA = 3243
-paramC = 23
-paramK = 16
-paramM = 1000
-
-serie = []
-n = 100
-
-for x in range(paramK):
-    v3 = (paramA * v1 + paramC * v2) % paramM
-    serie.append(v3)
-    v1 = v3
+#Congruencias Fundamental
+def generadorCongruenciasFundamental(v1, v2, paramA, paramC, paramK, paramM, cantidadGenerar):
+    serie = []
+    # Se generan los K primeros digitos que después se van a descartar
+    for x in range(paramK):
+        v3 = (paramA * v1 + paramC * v2) % paramM
+        serie.append(v3)
+        v1 = v3
     
+    # Se hace la generación que en realidad se va a usar
+    while (len(serie) <= cantidadGenerar + paramK):
+        v2 = serie[len(serie) - paramK]
+        v3 = (paramA * v1 + paramC * v2) % paramM
+        serie.append(v3)
+        v1 = v3
 
-print(serie)
-
-while (len(serie) <= n + paramK):
-    v2 = serie[len(serie) - paramK]
-    print(v2)
-    v3 = (paramA * v1 + paramC * v2) % paramM
-    serie.append(v3)
-    v1 = v3
-    #break
-
-serieResultado = serie[paramK:]
-print(serieResultado)
+    # Se recorta la serie según el parámetro K
+    serieResultado = serie[paramK:]
+    return serieResultado

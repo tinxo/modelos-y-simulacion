@@ -1,3 +1,13 @@
+#Funciones complementarias
+
+def verificarDobleCero(num):
+    numStr = str(num)
+    if (numStr[len(numStr) -1] == "0" and numStr[len(numStr) -2] == "0"):
+        #error
+        return False
+    else:
+        return True
+
 def obtenerDigitos(serie):
     res = []
     for num in serie:
@@ -15,10 +25,7 @@ def convertirBinario(serie):
             res.append(1)
     return res
 
-def convertirRango(serie, limiteInferior, limiteSuperior):
-    res = []
-    for num in serie:
-        
+#TODO: convertir valores individuales a un rango específico
 
 #prueba para digitos
 numeros = [1234, 5678, 0, 231]
